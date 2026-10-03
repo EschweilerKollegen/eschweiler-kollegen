@@ -21,6 +21,6 @@ Ist `WEBHOOK` leer, öffnet das Formular stattdessen das E-Mail-Programm des Bes
 
 ## Hinweise
 
-- Keine Analyse- und Werbedienste, keine externen Schriften, kein Cookie-Banner. Die Datenschutzerklärung beschreibt genau diesen Stand.
+- Reichweitenmessung mit Vercel Web Analytics (cookielos, Skript `/_vercel/insights/script.js` im `<head>` jeder Seite; im Vercel-Projekt eingeschaltet). Keine Werbedienste, keine Cookies, keine externen Schriften, kein Cookie-Banner. Die Datenschutzerklärung beschreibt genau diesen Stand.
 - Kanonische Adresse ist `https://www.eschweiler-kollegen.de`.
 - Nach Änderungen an `styles.css` oder `script.js` die Versionsnummer `?v=` in den vier HTML-Dateien erhöhen.
