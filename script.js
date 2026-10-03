@@ -1,4 +1,4 @@
-/* eschweiler-kollegen.de: Menü, Einsteigen beim Scrollen, Zeitleiste, Kontaktformular. Ohne dieses Skript ist jeder Inhalt sichtbar. */
+/* eschweiler-kollegen.de: Menü, Einsteigen beim Scrollen, Zeitleiste, Cookie-Einstellungen, Kontaktformular. Ohne dieses Skript ist jeder Inhalt sichtbar. */
 (function () {
   'use strict';
 
@@ -61,6 +61,16 @@
     if (document.documentElement.scrollHeight - window.innerHeight > 200) onScroll();
   }
 
+  /* Cookie-Einstellungen: öffnet das Einwilligungsfenster erneut */
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest ? e.target.closest('a.ek-cookie') : null;
+    if (!a) return;
+    e.preventDefault();
+    var cb = window.Cookiebot;
+    if (cb && typeof cb.renew === 'function') cb.renew();
+    else if (cb && typeof cb.show === 'function') cb.show();
+  });
+
   /* Kontaktformular.
      WEBHOOK: Adresse des n8n-Webhooks (Workflow "eschweiler-kollegen.de -> Kontakt -> Pipedrive (Generell)").
      Ist sie leer, öffnet das Formular
@@ -101,7 +111,11 @@
       button.disabled = true;
       say('Nachricht wird gesendet …', '');
       fetch(WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
-        .then(function (r) { if (!r.ok) throw new Error(String(r.status)); form.reset(); say(ok, 'ok'); })
+        .then(function (r) {
+          if (!r.ok) throw new Error(String(r.status));
+          form.reset(); say(ok, 'ok');
+          (window.dataLayer = window.dataLayer || []).push({ event: 'kontakt' }); /* für GTM; ohne Formularinhalte */
+        })
         .catch(function () {
           say('Die Nachricht konnte nicht gesendet werden. Bitte schreiben Sie an info@eschweiler-kollegen.de oder rufen Sie an: +49 171 479 13 14.', 'err');
         })
