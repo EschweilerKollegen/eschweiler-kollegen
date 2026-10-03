@@ -13,10 +13,11 @@ Unternehmensseite von Eschweiler & Kollegen. Statische Seite ohne Build-Schritt,
 
 ## Kontaktformular
 
-In `script.js` steht `var WEBHOOK = '';`. Dort gehört die Adresse des n8n-Webhooks hinein.
-Solange der Wert leer ist, öffnet das Formular das E-Mail-Programm des Besuchers mit der fertigen Nachricht an `info@eschweiler-kollegen.de`.
+Das Formular sendet per `POST` als JSON an den n8n-Webhook, der in `script.js` als `WEBHOOK` steht (Workflow „eschweiler-kollegen.de -> Kontakt -> Pipedrive (Generell)"). n8n legt Person und Deal in der Pipedrive-Pipeline „Generell" an, hängt die Nachricht als Notiz an und verschickt eine Eingangsbestätigung an den Absender sowie eine Meldung an `info@eschweiler-kollegen.de`.
 
-Gesendet wird als JSON: `name`, `unternehmen`, `email`, `telefon`, `nachricht`, `datenschutz`, `quelle`, `seite`, `zeitpunkt`.
+Felder: `name`, `unternehmen`, `email`, `telefon`, `nachricht`, `datenschutz`, `quelle`, `seite`, `zeitpunkt`. Das unsichtbare Feld `website` ist ein Honeypot gegen Bots.
+
+Ist `WEBHOOK` leer, öffnet das Formular stattdessen das E-Mail-Programm des Besuchers.
 
 ## Hinweise
 

@@ -62,9 +62,10 @@
   }
 
   /* Kontaktformular.
-     WEBHOOK: Adresse des n8n-Webhooks. Solange sie leer ist, öffnet das Formular
+     WEBHOOK: Adresse des n8n-Webhooks (Workflow "eschweiler-kollegen.de -> Kontakt -> Pipedrive (Generell)").
+     Ist sie leer, öffnet das Formular
      das E-Mail-Programm des Besuchers mit der fertigen Nachricht. */
-  var WEBHOOK = '';
+  var WEBHOOK = 'https://eschweiler.app.n8n.cloud/webhook/ek-kontakt';
   var form = document.getElementById('kontaktformular');
   if (form) {
     var status = document.getElementById('kf-status');
