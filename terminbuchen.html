@@ -4,8 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>window.dataLayer=window.dataLayer||[];</script>
-<!-- Google Tag Manager: lädt das Einwilligungsfenster (Cookiebot); der Meta-Pixel läuft nur nach Einwilligung -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5RNPGKBR');</script>
+<!-- Google Tag Manager: lädt das Einwilligungsfenster (Cookiebot); der Meta-Pixel läuft nur nach Einwilligung.
+     Start bei der ersten Interaktion (Tippen, Scrollen, Taste, Mausbewegung), spätestens 3 Sekunden nach dem Laden der Seite:
+     so bleibt der erste Seitenaufbau frei von Tracking-Skripten. Ereignisse im dataLayer arbeitet GTM beim Start nach. -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];var done=false,ev=['pointerdown','touchstart','keydown','scroll','wheel','mousemove'];function go(){if(done)return;done=true;for(var k=0;k<ev.length;k++)w.removeEventListener(ev[k],go,true);w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i;f.parentNode.insertBefore(j,f);}for(var k=0;k<ev.length;k++)w.addEventListener(ev[k],go,{capture:true,passive:true});function later(){w.setTimeout(go,3000);}if(d.readyState==='complete')later();else w.addEventListener('load',later);})(window,document,'script','dataLayer','GTM-5RNPGKBR');</script>
 <title>Termin buchen: erstes Gespräch | Eschweiler &amp; Kollegen</title>
 <meta name="description" content="Vereinbaren Sie online ein erstes, unverbindliches Gespräch mit Eschweiler &amp; Kollegen. Vertraulich, rund 30 Minuten, per Telefon.">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
