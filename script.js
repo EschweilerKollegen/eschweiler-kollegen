@@ -69,7 +69,7 @@
   /* Terminseite: Buchungskalender von Cal.com. Wird nur geladen, wo #cal-inline steht. */
   var calBox = document.getElementById('cal-inline');
   if (calBox) {
-    var CAL_LINK = 'andre-eschweiler/kostenfreies-erstgesprach-sanierung';
+    var CAL_LINK = 'andre-eschweiler/kostenfreies-erstgesprach-eschweiler-kollegen';
     var CAL_NS = 'erstgespraech';
     var lead = readLead();
     var greet = document.getElementById('tm-greet');
