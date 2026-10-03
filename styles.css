@@ -58,6 +58,7 @@ summary:focus-visible{outline:2px solid #3d87e8;outline-offset:2px}
 details[open] .ek-plus{transform:rotate(45deg)}
 @container (max-width: 820px){.ek-nav{display:none !important}.ek-menu{display:inline-flex !important}}
 
+[hidden]{display:none !important}
 /* Terminseite: Kalender von Cal.com */
 .ek-cal.is-ready{display:block !important;background:#ffffff !important}
 .ek-cal.is-ready .ek-cal-wait{display:none}
