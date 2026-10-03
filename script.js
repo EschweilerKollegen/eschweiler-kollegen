@@ -1,4 +1,4 @@
-/* eschweiler-kollegen.de: Menü, Einsteigen beim Scrollen, Zeitleiste, Cookie-Einstellungen, Kontaktformular. Ohne dieses Skript ist jeder Inhalt sichtbar. */
+/* eschweiler-kollegen.de: Menü, Einsteigen beim Scrollen, Zeitleiste, Terminkalender, Cookie-Einstellungen, Kontaktformular. Ohne dieses Skript ist jeder Inhalt sichtbar. */
 (function () {
   'use strict';
 
@@ -59,6 +59,21 @@
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', function () { if (live) request(); });
     if (document.documentElement.scrollHeight - window.innerHeight > 200) onScroll();
+  }
+
+  /* Terminseite: Buchungskalender von Cal.com. Wird nur geladen, wo #cal-inline steht. */
+  var calBox = document.getElementById('cal-inline');
+  if (calBox) {
+    var CAL_LINK = 'andre-eschweiler/kostenfreies-erstgesprach-sanierung';
+    var CAL_NS = 'erstgespraech';
+    (function (C, A, L) { var p = function (a, ar) { a.q.push(ar); }; var d = C.document; C.Cal = C.Cal || function () { var cal = C.Cal; var ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement('script')).src = A; cal.loaded = true; } if (ar[0] === L) { var api = function () { p(api, arguments); }; var namespace = ar[1]; api.q = api.q || []; if (typeof namespace === 'string') { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ['initNamespace', namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, 'https://app.cal.com/embed/embed.js', 'init');
+    window.Cal('init', CAL_NS, { origin: 'https://app.cal.com' });
+    window.Cal.ns[CAL_NS]('inline', { elementOrSelector: '#cal-inline', calLink: CAL_LINK, config: { layout: 'month_view', theme: 'light', useSlotsViewOnSmallScreen: 'true' } });
+    window.Cal.ns[CAL_NS]('ui', { theme: 'light', hideEventTypeDetails: true, layout: 'month_view', cssVarsPerTheme: { light: { 'cal-brand': '#0b1c33' } } });
+    window.Cal.ns[CAL_NS]('on', { action: 'linkReady', callback: function () { calBox.classList.add('is-ready'); } });
+    window.Cal.ns[CAL_NS]('on', { action: 'bookingSuccessful', callback: function () {
+      (window.dataLayer = window.dataLayer || []).push({ event: 'termin_gebucht' });
+    } });
   }
 
   /* Cookie-Einstellungen: öffnet das Einwilligungsfenster erneut */

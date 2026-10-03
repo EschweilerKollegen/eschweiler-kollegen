@@ -58,6 +58,10 @@ summary:focus-visible{outline:2px solid #3d87e8;outline-offset:2px}
 details[open] .ek-plus{transform:rotate(45deg)}
 @container (max-width: 820px){.ek-nav{display:none !important}.ek-menu{display:inline-flex !important}}
 
+/* Terminseite: Kalender von Cal.com */
+.ek-cal.is-ready{display:block !important;background:#ffffff !important}
+.ek-cal.is-ready .ek-cal-wait{display:none}
+.ek-cal iframe{display:block;width:100%}
 /* Schriften: lokal eingebunden, keine Verbindung zu Google */
 @font-face{font-family:'Figtree';font-style:normal;font-weight:300 900;font-display:swap;src:url(/assets/fonts/figtree-latin-wght-normal.woff2) format('woff2')}
 @font-face{font-family:'Playfair Display';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/playfair-display-latin-400-normal.woff2) format('woff2')}

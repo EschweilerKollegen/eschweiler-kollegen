@@ -22,5 +22,6 @@ Ist `WEBHOOK` leer, öffnet das Formular stattdessen das E-Mail-Programm des Bes
 ## Hinweise
 
 - Reichweitenmessung mit Vercel Web Analytics (cookielos, Skript `/_vercel/insights/script.js` im `<head>` jeder Seite; im Vercel-Projekt eingeschaltet). Keine Werbedienste, keine Cookies, keine externen Schriften, kein Cookie-Banner. Die Datenschutzerklärung beschreibt genau diesen Stand.
+- `/terminbuchen` bindet den Buchungskalender von Cal.com ein (`script.js`, nur wo `#cal-inline` steht).
 - Kanonische Adresse ist `https://www.eschweiler-kollegen.de`.
 - Nach Änderungen an `styles.css` oder `script.js` die Versionsnummer `?v=` in den vier HTML-Dateien erhöhen.
